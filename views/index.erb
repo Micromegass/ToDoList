@@ -1,56 +1,44 @@
         
        <div class="container text-center">
-
         <div class="form-group">
-        <div class="card">
-                <div class="card-header">
+          <div class="card">
+             <div class="card-header">
                  <h2>Lista de la Tareas <h2>
-                </div>
-                
+             </div>
                 <div class="card-body">
-                     
-
                         <% @tareas.each do |tarea| %>
                         <% if tarea["done"] == false %>
                         <ul class="form-group">
-                                <%= tarea["title"] %>
-
+                                <h3>  <%= tarea["title"] %> </h3>
                                 <form method="post" action="/done">
-                                        <div class="checkbox">
                                         <label> <input type="checkbox" name="id" value="<%=tarea["id"]%>" <%= tarea["id"] %> </label>
-                                         </div>
                                       <button type="submit" class="btn btn-success"> Listo!! </button>
                                 </form>
-
+                                <br> <br>
                                 <div class=form-group>
-                                <form action="/tarea/<%=tarea["id"]%>" method="post">
-                                <input class="btn btn-danger" type="hidden" name="_method" value="DELETE">
-                                <input type="submit" value="Borrar?">
-                                </form>
+                                    <form action="/tarea/<%=tarea["id"]%>" method="post">
+                                      <input type="hidden" name="_method" value="DELETE">
+                                      <input class="btn btn-danger" type="submit" value="Borrar?">
+                                    </form>
                                 </div>
-
-
-
-
-</div>
-
- </ul>
+                        </ul>
+                         
                         <% end  %>
-                         <% end  %>
+                        <% end  %>
 
-                 <p><a href="/tarea/new">Crear nueva tarea</a></p>
+                         <button class="btn btn-dark"><a href="/tarea/new" style="color:white">Crear nueva tarea</a></button>
+                         <button class="btn btn-dark"><a href="/hecha" style="color:white">Ver tareas terminados</a></button>
 
-                 <p><a href="/hecha">Ver tareas terminados</a></p>
-
-
+                  </div>             
                 </div>
 
-                </div class="card-footer">
+                <div class="card-footer">
+                 
                        © All rights reserved
                 </div>
+           </div>
         </div>
-        </div>
-        </div>
+      </div>
 
 
         <%# <form action="new/object" method="post"> 
