@@ -1,38 +1,32 @@
 
     <div class="container text-center">
-        <div class="form-group">
+      <div class="form-group">
         <div class="card">
                 <div class="card-header">
-                 <h4> Tareas Hechas <h4>
+                 <h2> Tareas Hechas </h2>
                 </div>
                 
                 <div class="card-body">
-                     
-
                         <% @tareas.each do |tarea| %>
                         <% if tarea["done"] == true %>
                         <ul class="form-group">
-                                <%= tarea["title"] %>
-
-
+                        <h3> <%= tarea["title"] %> </h3>
                         </ul>
-
                           <div class=form-group>
                                 <form action="/tarea/<%=tarea["id"]%>" method="post">
-                                <input class="btn btn-danger" type="hidden" name="_method" value="DELETE">
-                                <input type="submit" value="Borrar?">
+                                <input  type="hidden" name="_method" value="DELETE">
+                                <input  class="btn btn-danger" type="submit" value="Borrar?">
                                 </form>
-                                </div>
-                        <% end  %>
-                         <% end  %>
-
-
+                           </div>
+                          <% end  %>
+                          <% end  %>
+               
+                 <button class="btn btn-dark"><a href="/" style="color:white"> regresar a tareas</a></button>
                 </div>
-                 <p><a href="/"> regresar a tareas</a></p>
 
-                </div class="card-footer">
+                <div class="card-footer">
                          © All rights reserved
                 </div>
-        </div>
-        </div>
+           </div>
+          </div>
         </div>
