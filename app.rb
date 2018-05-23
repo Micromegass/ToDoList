@@ -1,28 +1,47 @@
 require 'sinatra'
-require "make_todo"
+require 'make_todo'
 
 
 
 get '/' do 
-    @task = Tarea.all
+    @tareas = Tarea.all
     erb :index
 
 end
 
 
-post '/new' do
+get '/tarea/new' do
+ 
+  erb :new
 
-  @task = Task.create
 end
 
-# put '/' do
-#   .. replace something ..
-# end
 
-# patch '/' do
-#   .. modify something ..
-# end
+post '/tarea/new' do
+ @tarea = Tarea.create(params[:title])
+  redirect '/'
+end
 
-# delete '/' do
-#   .. annihilate something ..
-# end
+get '/done' do
+  erb :done
+end
+
+
+
+post '/done' do 
+Tarea.update(params[:id])
+redirect '/'
+end 
+
+
+get '/hecha' do
+    @tareas = Tarea.all
+    erb :hecha
+end 
+
+
+
+delete '/tarea/:id' do
+  @tarea = Tarea.destroy(params[:id])
+  redirect "/"
+end
